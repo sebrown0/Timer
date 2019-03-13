@@ -20,6 +20,7 @@ public abstract class Timer implements  Timers, Beatable {
 	
 	protected TimeFormatter time = null;
 	protected BeatingHeart heartBeat = null;
+	private long durationOfTimer = 0;
 
 	/*
 	 *  New Timer with a starting time and heart beat to make it tick.
@@ -27,6 +28,15 @@ public abstract class Timer implements  Timers, Beatable {
 	public Timer(TimeFormatter time, BeatingHeart heartBeat) {
 		this.time = time;
 		this.heartBeat = heartBeat;
+	}
+	
+	/*
+	 *  New Timer with a starting time and heart beat to make it tick.
+	 */
+	public Timer(TimeFormatter time, BeatingHeart heartBeat, long durationOfTimer) {
+		this.time = time;
+		this.heartBeat = heartBeat;
+		this.durationOfTimer = durationOfTimer;
 	}
 	
 	/*
@@ -49,18 +59,13 @@ public abstract class Timer implements  Timers, Beatable {
 	 */
 	@Override
 	public void startTimer() {	
-		heartBeat.startBeating(this);
+		if(durationOfTimer > 0 ) {
+			heartBeat.startBeating(this);
+		} else {
+			heartBeat.startBeating(this, durationOfTimer);
+		}
 	}
-	
-	/*
-	 * (non-Javadoc)
-	 * @see timer.Timers#startTimer()
-	 */
-	@Override
-	public void startTimer(long durationOfTimer) {	
-		heartBeat.startBeating(this, durationOfTimer);
-	}
-	
+		
 	/*
 	 * (non-Javadoc)
 	 * @see timer.Timers#stopTimer()

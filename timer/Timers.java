@@ -21,11 +21,6 @@ public interface Timers {
 	void startTimer();
 
 	/*
-	 *  Start a timer that last for a specified duration.
-	 */
-	void startTimer(long durationOfTimer); 
-	
-	/*
 	 *  Stop the timer.
 	 */
 	void stopTimer();

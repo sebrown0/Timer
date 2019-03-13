@@ -37,6 +37,7 @@
 --
 # time: TimeFormatter 
 # heartBeat: BeatingHeart
+- durationOfTimer: long
 --
 + Timer(TimeFormatter time, BeatingHeart heartBeat)
 + time(): TimeFormatter</panel_attributes>
@@ -373,7 +374,6 @@ Implements</panel_attributes>
 --
 incrementTimer()
 startTimer()
-startTimer(long durationOfTimer)
 stopTimer()
 currentTime(): int</panel_attributes>
     <additional_attributes/>
