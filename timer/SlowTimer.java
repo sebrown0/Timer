@@ -14,10 +14,20 @@ import time.TimeFormatter;
  */
 public class SlowTimer extends Timer implements Timers {
 
+	/*
+	 *  New slow timer without a specified duration.
+	 */
 	public SlowTimer(TimeFormatter time, SlowBeat slowBeat) {		
 		super(time, slowBeat.getBeat(SlowBeat.timeUnit));
 	}
 
+	/*
+	 *  New slow timer with a specified duration.
+	 */
+	public SlowTimer(TimeFormatter time, SlowBeat slowBeat, long durationOfTimer) {		
+		super(time, slowBeat.getBeat(SlowBeat.timeUnit), durationOfTimer);
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * @see timer.SlowTimer#currentTime()

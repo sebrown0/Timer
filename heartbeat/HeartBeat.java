@@ -47,7 +47,7 @@ public class HeartBeat implements  BeatingHeart {
 	 * @see heartbeat.BeatingHeart#startBeating(heartbeat.BeatingHeart, long)
 	 */
 	@Override
-	public void startBeating(Beatable target, long maxNumberOfBeats) {	
+	public void startBeating(Beatable target, long maxNumberOfBeats) {
 		this.maxNumberOfBeats = maxNumberOfBeats;
 		heartBeat.scheduleAtFixedRate(target, initialDelay, period,  timeUnit);
 	}

@@ -40,6 +40,8 @@
 - durationOfTimer: long
 --
 + Timer(TimeFormatter time, BeatingHeart heartBeat)
++ Timer(TimeFormatter time, BeatingHeart heartBeat, 
+              long durationOfTimer)
 + time(): TimeFormatter</panel_attributes>
     <additional_attributes/>
   </element>
@@ -75,11 +77,13 @@ bg=yellow</panel_attributes>
       <x>1008</x>
       <y>304</y>
       <w>288</w>
-      <h>48</h>
+      <h>64</h>
     </coordinates>
     <panel_attributes>_FastTimer_
 -
-+ FastTimer(TimeFormatter time, FastBeat slowBeat)</panel_attributes>
++ FastTimer(TimeFormatter time, FastBeat slowBeat)
++ FastTimer(TimeFormatter time, FastBeat fastBeat, 
+    long durationOfTimer)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -384,11 +388,13 @@ currentTime(): int</panel_attributes>
       <x>664</x>
       <y>352</y>
       <w>288</w>
-      <h>48</h>
+      <h>72</h>
     </coordinates>
     <panel_attributes>_SlowTimer_
 -
-+ SlowTimer(TimeFormatter time, SlowBeat slowBeat)</panel_attributes>
++ SlowTimer(TimeFormatter time, SlowBeat slowBeat)
++ SlowTimer(TimeFormatter time, SlowBeat slowBeat, 
+    long durationOfTimer)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

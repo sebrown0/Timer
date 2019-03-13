@@ -59,7 +59,7 @@ public abstract class Timer implements  Timers, Beatable {
 	 */
 	@Override
 	public void startTimer() {	
-		if(durationOfTimer > 0 ) {
+		if(durationOfTimer <= 0 ) {
 			heartBeat.startBeating(this);
 		} else {
 			heartBeat.startBeating(this, durationOfTimer);

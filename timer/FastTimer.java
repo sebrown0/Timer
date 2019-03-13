@@ -14,8 +14,18 @@ import time.TimeFormatter;
  */
 public class FastTimer extends Timer implements Timers {
 
+	/*
+	 *  New fast timer without a specified duration.
+	 */
 	public FastTimer(TimeFormatter time, FastBeat fastBeat) {		
 		super(time, fastBeat.getBeat(FastBeat.timeUnit));
+	}
+	
+	/*
+	 *  New fast timer with a specified duration.
+	 */
+	public FastTimer(TimeFormatter time, FastBeat fastBeat, long durationOfTimer) {		
+		super(time, fastBeat.getBeat(FastBeat.timeUnit), durationOfTimer);
 	}
 
 	/*
