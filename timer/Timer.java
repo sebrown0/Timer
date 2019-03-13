@@ -35,6 +35,13 @@ public abstract class Timer implements  Timers, Beatable {
 	public TimeFormatter time() {
 		return time;
 	}
+	
+	/*
+	 *  Return the heart beat for this timer.
+	 */
+	public BeatingHeart heartBeat() {
+		return heartBeat;
+	}
 
 	/*
 	 * (non-Javadoc)

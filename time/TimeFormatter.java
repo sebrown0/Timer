@@ -24,10 +24,6 @@ public interface TimeFormatter {
 	 */
 	int getTimeInSeconds(int hours, int minutes, int seconds);
 	
-	/*
-	 *  The current time in seconds.
-	 */
-//	int currentTime(); 	
 	
 	/*
 	 *  Get the time in the format hh:mm:ss.
