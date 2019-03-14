@@ -4,7 +4,7 @@
 package timer;
 
 import heartbeat.FastBeat;
-import time.TimeFormatter;
+import time.MutableTime;
 
 /**
  * @author Steve Brown
@@ -17,14 +17,14 @@ public class FastTimer extends Timer implements Timers {
 	/*
 	 *  New fast timer without a specified duration.
 	 */
-	public FastTimer(TimeFormatter time, FastBeat fastBeat) {		
+	public FastTimer(MutableTime time, FastBeat fastBeat) {		
 		super(time, fastBeat.getBeat(FastBeat.timeUnit));
 	}
 	
 	/*
 	 *  New fast timer with a specified duration.
 	 */
-	public FastTimer(TimeFormatter time, FastBeat fastBeat, long durationOfTimer) {		
+	public FastTimer(MutableTime time, FastBeat fastBeat, long durationOfTimer) {		
 		super(time, fastBeat.getBeat(FastBeat.timeUnit), durationOfTimer);
 	}
 
@@ -44,8 +44,6 @@ public class FastTimer extends Timer implements Timers {
 	@Override
 	public void incrementTimer() {
 		time.incrementMilliSeconds();
-		System.out.println("Fast Timer - > " + time.formattedTime());		// TODO - R
-		System.out.println("ms ->" + time.milliSeconds());					// TODO - R
 	}
 
 }

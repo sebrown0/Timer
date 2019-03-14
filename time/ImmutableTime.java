@@ -6,18 +6,14 @@ package time;
 /**
  * @author Steve Brown
  *
+ *  An ImmutableTime cannot be changed. It can only be read.
  */
-public interface TimeFormatter {
+public interface ImmutableTime {
 	
 	/*
-	 *  Increment time by 1s.
+	 *  Get the time that the object was created with in seconds.
 	 */
-	void incrementMilliSeconds();
-	
-	/*
-	 *  Increment time by 1s.
-	 */
-	void incrementSeconds(); 
+	int givenTimeSeconds();
 	
 	/*
 	 *  Get the time in seconds for the given H, M, S.

@@ -31,18 +31,21 @@
       <x>664</x>
       <y>144</y>
       <w>288</w>
-      <h>120</h>
+      <h>160</h>
     </coordinates>
     <panel_attributes>_/&lt;&lt;Timer&gt;&gt;/_
 --
 # time: TimeFormatter 
 # heartBeat: BeatingHeart
 - durationOfTimer: long
+- count: long
 --
 + Timer(TimeFormatter time, BeatingHeart heartBeat)
 + Timer(TimeFormatter time, BeatingHeart heartBeat, 
               long durationOfTimer)
-+ time(): TimeFormatter</panel_attributes>
++ time(): TimeFormatter
++ heartBeat: BeatingHeart
++ timerRunning(): boolean</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -152,15 +155,16 @@ Implements</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>664</x>
-      <y>504</y>
+      <y>480</y>
       <w>328</w>
-      <h>104</h>
+      <h>112</h>
     </coordinates>
-    <panel_attributes>_/&lt;&lt;TimerFormatter&gt;&gt;/_
+    <panel_attributes>_/&lt;&lt;ImmutableTime&gt;&gt;/_
 --
-+ getTimeInSeconds(int hours, int minutes, int seconds): long
-+ currentTime(): long 
++ givenTimeSeconds(): int
++ getTimeInSeconds(int hours, int minutes, int seconds): int
 + formattedTime(): String 
++ milliseconds(): int
 + seconds(): int
 + minutes(): int
 + hours(): int</panel_attributes>
@@ -169,22 +173,19 @@ Implements</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1096</x>
-      <y>504</y>
+      <x>1088</x>
+      <y>480</y>
       <w>272</w>
-      <h>200</h>
+      <h>160</h>
     </coordinates>
     <panel_attributes>_Time_
 --
 - hours: int
 - minutes: int
 - seconds: int
-- milliseconds: long
-- hoursElasped: int
-- minutesElasped: int
-- secondsElasped: int
-- milliSecondsElasped: long
-- currentTime: long
+- milliseconds: int
+- currentTimeSeconds: int
+- givenTimeSeconds: int
 -
 + Time(int currentTime) 
 + Time(int hours, int minutes, int seconds)
@@ -197,13 +198,13 @@ Implements</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>984</x>
-      <y>544</y>
-      <w>128</w>
+      <y>520</y>
+      <w>120</w>
       <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 Implements</panel_attributes>
-    <additional_attributes>10.0;20.0;140.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;130.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -236,7 +237,7 @@ Extends</panel_attributes>
       <x>48</x>
       <y>72</y>
       <w>560</w>
-      <h>688</h>
+      <h>752</h>
     </coordinates>
     <panel_attributes>*HeartBeat*
 --
@@ -247,7 +248,7 @@ bg=orange</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>400</x>
-      <y>576</y>
+      <y>584</y>
       <w>104</w>
       <h>48</h>
     </coordinates>
@@ -262,17 +263,17 @@ bg=orange</panel_attributes>
       <x>480</x>
       <y>416</y>
       <w>64</w>
-      <h>176</h>
+      <h>184</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 Extends</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;200.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;210.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>336</x>
-      <y>432</y>
+      <y>440</y>
       <w>120</w>
       <h>48</h>
     </coordinates>
@@ -285,7 +286,7 @@ Extends</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>400</x>
-      <y>472</y>
+      <y>480</y>
       <w>80</w>
       <h>120</h>
     </coordinates>
@@ -297,7 +298,7 @@ Implements</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>136</x>
-      <y>576</y>
+      <y>584</y>
       <w>104</w>
       <h>48</h>
     </coordinates>
@@ -310,7 +311,7 @@ Implements</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>176</x>
-      <y>432</y>
+      <y>440</y>
       <w>120</w>
       <h>48</h>
     </coordinates>
@@ -323,7 +324,7 @@ Implements</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>224</x>
-      <y>472</y>
+      <y>480</y>
       <w>80</w>
       <h>120</h>
     </coordinates>
@@ -337,11 +338,11 @@ Implements</panel_attributes>
       <x>144</x>
       <y>416</y>
       <w>64</w>
-      <h>176</h>
+      <h>184</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 Extends</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;200.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;210.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -352,7 +353,7 @@ Extends</panel_attributes>
       <h>456</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>210.0;10.0;10.0;10.0;10.0;550.0;280.0;550.0;280.0;380.0;340.0;380.0;340.0;340.0;340.0;380.0;230.0;380.0;230.0;340.0</additional_attributes>
+    <additional_attributes>210.0;10.0;10.0;10.0;10.0;550.0;280.0;550.0;280.0;380.0;340.0;380.0;340.0;340.0;340.0;380.0;230.0;380.0;230.0;350.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -379,7 +380,8 @@ Implements</panel_attributes>
 incrementTimer()
 startTimer()
 stopTimer()
-currentTime(): int</panel_attributes>
+currentTime(): int
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -413,13 +415,13 @@ Implements</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>896</x>
-      <y>256</y>
+      <y>296</y>
       <w>64</w>
-      <h>112</h>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 Extends</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -451,11 +453,84 @@ Implements</panel_attributes>
       <x>632</x>
       <y>448</y>
       <w>760</w>
-      <h>312</h>
+      <h>376</h>
     </coordinates>
     <panel_attributes>*Time*
 --
 bg=orange</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1088</x>
+      <y>680</y>
+      <w>272</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>_ChangeableTime_
+--
+- hoursElasped: int
+- minutesElasped: int
+- secondsElasped: int
+- milliSecondsElasped: int
+-
++ Time(int currentTime) 
++ Time(int hours, int minutes, int seconds)
+- checkTime (int hours, int minutes, int seconds): int
+- formatDigit(int digit): String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1216</x>
+      <y>632</y>
+      <w>64</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+Extends</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>664</x>
+      <y>680</y>
+      <w>328</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>_/&lt;&lt;MutableTime&gt;&gt;/_
+--
++ incrementMilliSeconds()
++ incrementSeconds() 
++ currentTime(): int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>824</x>
+      <y>584</y>
+      <w>64</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+Extends</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>984</x>
+      <y>712</y>
+      <w>120</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+Implements</panel_attributes>
+    <additional_attributes>10.0;20.0;130.0;20.0</additional_attributes>
   </element>
 </diagram>

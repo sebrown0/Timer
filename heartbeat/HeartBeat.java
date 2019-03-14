@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author Steve Brown
  *
- *  Schedules a target object to be run every beat, for the given time unit. 
+ *  Schedules a target object to be run for every beat, for the given time unit. 
  */
 public class HeartBeat implements  BeatingHeart {
 	

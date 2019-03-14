@@ -5,7 +5,7 @@ package timer;
 
 import heartbeat.Beatable;
 import heartbeat.BeatingHeart;
-import time.TimeFormatter;
+import time.MutableTime;
 
 /**
  * @author Steve Brown
@@ -18,14 +18,16 @@ import time.TimeFormatter;
 
 public abstract class Timer implements  Timers, Beatable {
 	
-	protected TimeFormatter time = null;
-	protected BeatingHeart heartBeat = null;
-	private long durationOfTimer = 0;
+	protected MutableTime time = null;				// We need a changeable time for a timer.
+	protected BeatingHeart heartBeat = null;		// A heart beat to represent a 'tick'.
+	private long beatCount =  0;					// How many beats has this timer had.
+	private long durationOfTimer = 0;				// How long should this timer run for.
+	private boolean timerRunning = false;			// Is the timer running.
 
 	/*
 	 *  New Timer with a starting time and heart beat to make it tick.
 	 */
-	public Timer(TimeFormatter time, BeatingHeart heartBeat) {
+	public Timer(MutableTime time, BeatingHeart heartBeat) {
 		this.time = time;
 		this.heartBeat = heartBeat;
 	}
@@ -33,7 +35,7 @@ public abstract class Timer implements  Timers, Beatable {
 	/*
 	 *  New Timer with a starting time and heart beat to make it tick.
 	 */
-	public Timer(TimeFormatter time, BeatingHeart heartBeat, long durationOfTimer) {
+	public Timer(MutableTime time, BeatingHeart heartBeat, long durationOfTimer) {
 		this.time = time;
 		this.heartBeat = heartBeat;
 		this.durationOfTimer = durationOfTimer;
@@ -42,7 +44,7 @@ public abstract class Timer implements  Timers, Beatable {
 	/*
 	 *  Return the time for this timer.
 	 */
-	public TimeFormatter time() {
+	public MutableTime time() {
 		return time;
 	}
 	
@@ -52,6 +54,13 @@ public abstract class Timer implements  Timers, Beatable {
 	public BeatingHeart heartBeat() {
 		return heartBeat;
 	}
+	
+	/*
+	 *  Check to see if the timer is running.
+	 */
+	public boolean timerRunning() {
+		return timerRunning;
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -59,6 +68,7 @@ public abstract class Timer implements  Timers, Beatable {
 	 */
 	@Override
 	public void startTimer() {	
+		timerRunning = true;
 		if(durationOfTimer <= 0 ) {
 			heartBeat.startBeating(this);
 		} else {
@@ -71,7 +81,8 @@ public abstract class Timer implements  Timers, Beatable {
 	 * @see timer.Timers#stopTimer()
 	 */
 	@Override
-	public void stopTimer() {	
+	public void stopTimer() {
+		timerRunning = false;
 		heartBeat.stopBeating();
 	}
 	
@@ -85,6 +96,11 @@ public abstract class Timer implements  Timers, Beatable {
 		heartBeat.anotherBeat();  				
 		// Increment this timer's measurement of time.
 		incrementTimer();
+		beatCount++;
+		if(beatCount >= durationOfTimer) {
+			// Timer has expired so stop it.
+			stopTimer();
+		}
 	}
 
 	/*

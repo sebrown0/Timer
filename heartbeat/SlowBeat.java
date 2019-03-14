@@ -17,5 +17,7 @@ public interface SlowBeat extends BeatingHeart {
 	/* 
 	 *  Get the time unit that was used for this instance of HeartBeat.
 	 */
-	TimeUnit getTimeUnit();
+	default TimeUnit getTimeUnit() {
+		return timeUnit; 
+	}
 }

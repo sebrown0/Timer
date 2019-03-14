@@ -3,8 +3,6 @@
  */
 package heartbeat;
 
-import java.util.concurrent.TimeUnit;
-
 /**
  * @author Steve Brown
  *
@@ -13,11 +11,10 @@ import java.util.concurrent.TimeUnit;
 public class FastHeartbeat extends HeartBeat implements FastBeat{
 
 	/*
-	 * (non-Javadoc)
-	 * @see heartbeat.FastBeat#getTimeUnit()
+	 *  A FastHeartbeat (1 fixed period) of whatever the FastBeat.timeUnit is. 
 	 */
-	@Override
-	public TimeUnit getTimeUnit() {
-		return timeUnit;
+	public FastHeartbeat() {
+		super(1, FastBeat.timeUnit);
 	}
+
 }
