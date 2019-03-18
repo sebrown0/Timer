@@ -17,15 +17,15 @@ public class FastTimer extends Timer implements Timers {
 	/*
 	 *  New fast timer without a specified duration.
 	 */
-	public FastTimer(MutableTime time, FastBeat fastBeat) {		
-		super(time, fastBeat.getBeat(FastBeat.timeUnit));
+	public FastTimer(MutableTime time, FastBeat fastBeat, String owner) {		
+		super(time, fastBeat.getBeat(FastBeat.timeUnit, owner, "FastTimer"));
 	}
 	
 	/*
 	 *  New fast timer with a specified duration.
 	 */
-	public FastTimer(MutableTime time, FastBeat fastBeat, long durationOfTimer) {		
-		super(time, fastBeat.getBeat(FastBeat.timeUnit), durationOfTimer);
+	public FastTimer(MutableTime time, FastBeat fastBeat, TimerDurationSeconds durationOfTimer, String owner) {		
+		super(time, fastBeat.getBeat(FastBeat.timeUnit, owner, "FastTimer"), durationOfTimer);
 	}
 
 	/*

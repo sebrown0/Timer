@@ -33,12 +33,12 @@ public abstract class Timer implements  Timers, Beatable {
 	}
 	
 	/*
-	 *  New Timer with a starting time and heart beat to make it tick.
+	 *  New Timer with a starting time, duration and heart beat to make it tick.
 	 */
-	public Timer(MutableTime time, BeatingHeart heartBeat, long durationOfTimer) {
+	public Timer(MutableTime time, BeatingHeart heartBeat, TimerDurationSeconds durationOfTimer) {
 		this.time = time;
 		this.heartBeat = heartBeat;
-		this.durationOfTimer = durationOfTimer;
+		this.durationOfTimer = durationOfTimer.getDuration();
 	}
 	
 	/*

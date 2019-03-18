@@ -13,7 +13,7 @@ public class SlowHeartbeat extends HeartBeat implements SlowBeat{
 	/*
 	 *  A SlowHeartbeat (1 fixed period) of whatever the SlowBeat.timeUnit is. 
 	 */
-	public SlowHeartbeat() {
-		super(1, SlowBeat.timeUnit);
+	public SlowHeartbeat(String owner) {
+		super(1, SlowBeat.timeUnit, owner, "SlowHeartBeat" );
 	}
 }

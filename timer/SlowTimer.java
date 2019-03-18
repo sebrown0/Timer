@@ -3,6 +3,9 @@
  */
 package timer;
 
+
+
+import timer.TimerDurationSeconds;
 import heartbeat.SlowBeat;
 import time.MutableTime;
 
@@ -17,15 +20,15 @@ public class SlowTimer extends Timer implements Timers {
 	/*
 	 *  New slow timer without a specified duration.
 	 */
-	public SlowTimer(MutableTime time, SlowBeat slowBeat) {		
-		super(time, slowBeat.getBeat(SlowBeat.timeUnit));
+	public SlowTimer(MutableTime time, SlowBeat slowBeat, String owner) {		
+		super(time, slowBeat.getBeat(SlowBeat.timeUnit, owner, "SlowTimer"));
 	}
 
 	/*
 	 *  New slow timer with a specified duration.
 	 */
-	public SlowTimer(MutableTime time, SlowBeat slowBeat, long durationOfTimer) {		
-		super(time, slowBeat.getBeat(SlowBeat.timeUnit), durationOfTimer);
+	public SlowTimer(MutableTime time, SlowBeat slowBeat, TimerDurationSeconds durationOfTimer, String owner) {		
+		super(time, slowBeat.getBeat(SlowBeat.timeUnit, owner, "SlowTimer"), durationOfTimer);
 	}
 	
 	/*

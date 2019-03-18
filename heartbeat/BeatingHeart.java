@@ -25,7 +25,7 @@ public interface BeatingHeart extends Beatable{
 	void startBeating(Beatable target, long maxNumberOfBeats);
 	
 	/*
-	 *  Induce another heart beat.
+	 *  Increment the number of heart beats.
 	 */
 	void anotherBeat();
 	
@@ -37,8 +37,8 @@ public interface BeatingHeart extends Beatable{
 	/*
 	 *  Get a new HeartBeat with the time unit (period between beats) specified by timeUnit.
 	 */
-	default HeartBeat getBeat(TimeUnit timeUnit) {
-		return new HeartBeat(1, timeUnit);
+	default HeartBeat getBeat(TimeUnit timeUnit, String owner, String beatType) {
+		return new HeartBeat(1, timeUnit, owner, beatType);
 	}
-	
+
 }

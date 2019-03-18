@@ -13,8 +13,8 @@ public class FastHeartbeat extends HeartBeat implements FastBeat{
 	/*
 	 *  A FastHeartbeat (1 fixed period) of whatever the FastBeat.timeUnit is. 
 	 */
-	public FastHeartbeat() {
-		super(1, FastBeat.timeUnit);
+	public FastHeartbeat(String owner) {
+		super(1, FastBeat.timeUnit, owner, "FastHeartBeat");
 	}
 
 }
