@@ -5,6 +5,7 @@ package timer;
 
 import heartbeat.Beatable;
 import heartbeat.BeatingHeart;
+import heartbeat.SlowBeat;
 import time.MutableTime;
 
 /**
@@ -40,7 +41,7 @@ public abstract class Timer implements  Timers, Beatable {
 		this.heartBeat = heartBeat;
 		this.durationOfTimer = durationOfTimer.getDuration();
 	}
-	
+
 	/*
 	 *  Return the time for this timer.
 	 */

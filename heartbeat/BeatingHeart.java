@@ -5,6 +5,8 @@ package heartbeat;
 
 import java.util.concurrent.TimeUnit;
 
+import timer.DurationInSeconds;
+
 /**
  * @author Steve Brown
  *
@@ -23,7 +25,7 @@ public interface BeatingHeart extends Beatable{
 	 *  Keeps going until told to shut down (stopBeating) or maxNumberOfBeats are reached.
 	 */
 	void startBeating(Beatable target, long maxNumberOfBeats);
-	
+		
 	/*
 	 *  Increment the number of heart beats.
 	 */
