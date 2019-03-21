@@ -21,6 +21,7 @@ public class HeartBeat implements  BeatingHeart {
 	private int initialDelay = 1;							// Initial delay for the scheduled service. 
 	private int period = 1;									// Scheduled period between executing the service.
 	private TimeUnit timeUnit = TimeUnit.SECONDS;			// Time Unit for the period and delay.
+	private boolean isBeating = false;						// Is this heart beating.
 	public String heartBeatOwner;							// The owner of this HeartBeat.
 	public String heartBeatType;							// The type of HeartBeat.
 	
@@ -35,7 +36,6 @@ public class HeartBeat implements  BeatingHeart {
 		this.timeUnit = timeUnit;
 		this.heartBeatOwner = owner;
 		this.heartBeatType = heartBeatType;
-		System.out.println("HB -> (" + heartBeatType + ") created for: " + heartBeatOwner); // TODO - Log
 	}
 	
 	/*
@@ -55,6 +55,8 @@ public class HeartBeat implements  BeatingHeart {
 	public void startBeating(Beatable target, long maxNumberOfBeats) {
 		this.maxNumberOfBeats = maxNumberOfBeats;
 		heartBeat.scheduleAtFixedRate(target, initialDelay, period,  timeUnit);
+		isBeating = true;
+		System.out.println("HB -> (" + heartBeatType + ") created for: (" + heartBeatOwner + "). With (" + maxNumberOfBeats + ") beats."); // TODO - Log
 	}
 	
 	/*
@@ -66,6 +68,7 @@ public class HeartBeat implements  BeatingHeart {
 		numberOfBeats++;
 		if(numberOfBeats >= maxNumberOfBeats) {
 			stopBeating();
+			System.out.println("HB ->  (" + heartBeatOwner + ") stopped."); // TODO - Log
 		}
 	}
 
@@ -79,7 +82,8 @@ public class HeartBeat implements  BeatingHeart {
 		heartBeat.shutdown(); 
 		try {
 			heartBeat.awaitTermination(period, timeUnit);
-			heartBeat.shutdown(); 
+			heartBeat.shutdown();
+			isBeating = false;
 		} catch (InterruptedException e) {
 			System.out.println("Error shutting down");				// TODO - Log
 			heartBeat.shutdownNow();
@@ -102,6 +106,15 @@ public class HeartBeat implements  BeatingHeart {
 	@Override
 	public void beat() {
 		// Beatable object should implement.		
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see heartbeat.BeatingHeart#isBeating()
+	 */
+	@Override
+	public boolean isBeating() {
+		return isBeating;
 	}
 
 	

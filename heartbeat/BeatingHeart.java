@@ -37,6 +37,11 @@ public interface BeatingHeart extends Beatable{
 	void stopBeating();
 	
 	/*
+	 *  See if the heart is beating.
+	 */
+	boolean isBeating();
+	
+	/*
 	 *  Get a new HeartBeat with the time unit (period between beats) specified by timeUnit.
 	 */
 	default HeartBeat getBeat(TimeUnit timeUnit, String owner, String beatType) {

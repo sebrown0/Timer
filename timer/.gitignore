@@ -5,3 +5,5 @@
 /DurationInSeconds.class
 /TimerDuration.class
 /TimerDurationSeconds.class
+/TimerObserver.class
+/TimerSubject.class

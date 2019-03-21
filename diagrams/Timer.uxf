@@ -24,14 +24,14 @@
 
 
 // This text will be stored with each diagram;  use it for notes.</help_text>
-  <zoom_level>8</zoom_level>
+  <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>664</x>
-      <y>144</y>
-      <w>288</w>
-      <h>160</h>
+      <x>721</x>
+      <y>112</y>
+      <w>252</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>_/&lt;&lt;Timer&gt;&gt;/_
 --
@@ -51,24 +51,24 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>944</x>
-      <y>184</y>
-      <w>480</w>
-      <h>208</h>
+      <x>1001</x>
+      <y>147</y>
+      <w>385</w>
+      <h>210</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 Implements</panel_attributes>
-    <additional_attributes>440.0;10.0;510.0;10.0;510.0;240.0;10.0;240.0</additional_attributes>
+    <additional_attributes>390.0;10.0;460.0;10.0;460.0;280.0;10.0;280.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>520</x>
-      <y>16</y>
-      <w>224</w>
-      <h>32</h>
+      <x>546</x>
+      <y>7</y>
+      <w>259</w>
+      <h>28</h>
     </coordinates>
-    <panel_attributes>* TIMER WITH HEARTBEAT*
+    <panel_attributes>* Timer with Heartbeat and Observer*
 fontsize=20
 //fontfamily=SansSerif //possible: SansSerif,Serif,Monospaced
 bg=yellow</panel_attributes>
@@ -77,25 +77,27 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1008</x>
-      <y>304</y>
-      <w>288</w>
-      <h>64</h>
+      <x>1022</x>
+      <y>252</y>
+      <w>280</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>_FastTimer_
 -
-+ FastTimer(TimeFormatter time, FastBeat slowBeat)
++ FastTimer(TimeFormatter time, FastBeat slowBeat, String owner)
 + FastTimer(TimeFormatter time, FastBeat fastBeat, 
-    long durationOfTimer)</panel_attributes>
+    long durationOfTimer, String owner)
++ FastTimer(MutableTime time, FastBeat fastBeat, 
+    TimerDurationSeconds durationOfTimer, String owner)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>136</x>
-      <y>296</y>
-      <w>376</w>
-      <h>128</h>
+      <x>217</x>
+      <y>217</y>
+      <w>329</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>/_HeartBeat_/
 --
@@ -112,10 +114,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>632</x>
-      <y>72</y>
-      <w>760</w>
-      <h>368</h>
+      <x>693</x>
+      <y>49</y>
+      <w>665</w>
+      <h>448</h>
     </coordinates>
     <panel_attributes>*Timer*
 --
@@ -125,10 +127,10 @@ bg=orange</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>256</x>
-      <y>144</y>
-      <w>296</w>
-      <h>104</h>
+      <x>322</x>
+      <y>98</y>
+      <w>259</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>_/&lt;&lt;BeatingHeart&gt;&gt;/_
 --
@@ -142,22 +144,22 @@ bg=orange</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>456</x>
-      <y>240</y>
-      <w>80</w>
-      <h>72</h>
+      <x>497</x>
+      <y>182</y>
+      <w>70</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 Implements</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>664</x>
-      <y>480</y>
-      <w>328</w>
-      <h>112</h>
+      <x>721</x>
+      <y>602</y>
+      <w>287</w>
+      <h>98</h>
     </coordinates>
     <panel_attributes>_/&lt;&lt;ImmutableTime&gt;&gt;/_
 --
@@ -173,10 +175,10 @@ Implements</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1088</x>
-      <y>480</y>
-      <w>272</w>
-      <h>160</h>
+      <x>1092</x>
+      <y>602</y>
+      <w>238</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>_Time_
 --
@@ -197,10 +199,10 @@ Implements</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>984</x>
-      <y>520</y>
-      <w>120</w>
-      <h>32</h>
+      <x>1001</x>
+      <y>637</y>
+      <w>105</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 Implements</panel_attributes>
@@ -209,10 +211,10 @@ Implements</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>88</x>
-      <y>144</y>
-      <w>80</w>
-      <h>48</h>
+      <x>175</x>
+      <y>98</y>
+      <w>70</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>_/&lt;&lt;Beatable&gt;&gt;/_
 --
@@ -222,10 +224,10 @@ Implements</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>160</x>
-      <y>152</y>
-      <w>112</w>
-      <h>32</h>
+      <x>238</x>
+      <y>105</y>
+      <w>98</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 Extends</panel_attributes>
@@ -234,10 +236,10 @@ Extends</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>48</x>
-      <y>72</y>
-      <w>560</w>
-      <h>752</h>
+      <x>133</x>
+      <y>49</y>
+      <w>490</w>
+      <h>448</h>
     </coordinates>
     <panel_attributes>*HeartBeat*
 --
@@ -247,10 +249,10 @@ bg=orange</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>400</x>
-      <y>584</y>
-      <w>104</w>
-      <h>48</h>
+      <x>448</x>
+      <y>399</y>
+      <w>91</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>_FastHeartBeat_
 --
@@ -260,22 +262,22 @@ bg=orange</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
-      <y>416</y>
-      <w>64</w>
-      <h>184</h>
+      <x>518</x>
+      <y>322</y>
+      <w>56</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 Extends</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;210.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>336</x>
-      <y>440</y>
-      <w>120</w>
-      <h>48</h>
+      <x>392</x>
+      <y>336</y>
+      <w>105</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>_/&lt;&lt;FastBeat&gt;&gt;/_
 --
@@ -285,22 +287,22 @@ Extends</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>480</y>
-      <w>80</w>
-      <h>120</h>
+      <x>448</x>
+      <y>371</y>
+      <w>70</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 Implements</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>136</x>
-      <y>584</y>
-      <w>104</w>
-      <h>48</h>
+      <x>217</x>
+      <y>399</y>
+      <w>91</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>_SlowHeartBeat_
 --
@@ -310,10 +312,10 @@ Implements</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>176</x>
-      <y>440</y>
-      <w>120</w>
-      <h>48</h>
+      <x>273</x>
+      <y>336</y>
+      <w>105</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>_/&lt;&lt;SlowBeat&gt;&gt;/_
 --
@@ -323,57 +325,45 @@ Implements</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>224</x>
-      <y>480</y>
-      <w>80</w>
-      <h>120</h>
+      <x>294</x>
+      <y>371</y>
+      <w>70</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 Implements</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>144</x>
-      <y>416</y>
-      <w>64</w>
-      <h>184</h>
+      <x>224</x>
+      <y>322</y>
+      <w>56</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 Extends</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;210.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>88</x>
-      <y>208</y>
-      <w>288</w>
-      <h>456</h>
+      <x>189</x>
+      <y>154</y>
+      <w>231</w>
+      <h>308</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>210.0;10.0;10.0;10.0;10.0;550.0;280.0;550.0;280.0;380.0;340.0;380.0;340.0;340.0;340.0;380.0;230.0;380.0;230.0;350.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>112</x>
-      <y>104</y>
-      <w>712</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.
-Implements</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;20.0;870.0;20.0;870.0;50.0</additional_attributes>
+    <additional_attributes>190.0;10.0;10.0;10.0;10.0;420.0;270.0;420.0;270.0;400.0;310.0;400.0;310.0;320.0;310.0;400.0;240.0;400.0;240.0;320.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1104</x>
-      <y>144</y>
-      <w>192</w>
-      <h>88</h>
+      <x>1106</x>
+      <y>112</y>
+      <w>168</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>_/&lt;&lt;Timers&gt;&gt;/_
 --
@@ -387,25 +377,27 @@ currentTime(): int
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>664</x>
-      <y>352</y>
-      <w>288</w>
-      <h>72</h>
+      <x>721</x>
+      <y>322</y>
+      <w>287</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>_SlowTimer_
 -
-+ SlowTimer(TimeFormatter time, SlowBeat slowBeat)
++ SlowTimer(TimeFormatter time, SlowBeat slowBeat, String owner)
 + SlowTimer(TimeFormatter time, SlowBeat slowBeat, 
-    long durationOfTimer)</panel_attributes>
+    long durationOfTimer, String owner)
++ SlowTimer(MutableTime time, SlowBeat slowBeat,
+    TimerDurationSeconds durationOfTimer, String owner) </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>944</x>
-      <y>136</y>
-      <w>176</w>
-      <h>32</h>
+      <x>966</x>
+      <y>105</y>
+      <w>154</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 Implements</panel_attributes>
@@ -414,22 +406,22 @@ Implements</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>896</x>
-      <y>296</y>
-      <w>64</w>
-      <h>72</h>
+      <x>847</x>
+      <y>245</y>
+      <w>56</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 Extends</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>944</x>
-      <y>224</y>
-      <w>104</w>
-      <h>96</h>
+      <x>966</x>
+      <y>182</y>
+      <w>91</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 Extends</panel_attributes>
@@ -438,10 +430,10 @@ Extends</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1184</x>
-      <y>224</y>
-      <w>80</w>
-      <h>96</h>
+      <x>1176</x>
+      <y>182</y>
+      <w>70</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 Implements</panel_attributes>
@@ -450,10 +442,10 @@ Implements</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>632</x>
-      <y>448</y>
-      <w>760</w>
-      <h>376</h>
+      <x>693</x>
+      <y>581</y>
+      <w>665</w>
+      <h>329</h>
     </coordinates>
     <panel_attributes>*Time*
 --
@@ -463,10 +455,10 @@ bg=orange</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1088</x>
-      <y>680</y>
-      <w>272</w>
-      <h>136</h>
+      <x>1092</x>
+      <y>777</y>
+      <w>238</w>
+      <h>119</h>
     </coordinates>
     <panel_attributes>_ChangeableTime_
 --
@@ -485,10 +477,10 @@ bg=orange</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1216</x>
-      <y>632</y>
-      <w>64</w>
-      <h>64</h>
+      <x>1204</x>
+      <y>735</y>
+      <w>56</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 Extends</panel_attributes>
@@ -497,10 +489,10 @@ Extends</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>664</x>
-      <y>680</y>
-      <w>328</w>
-      <h>112</h>
+      <x>721</x>
+      <y>777</y>
+      <w>287</w>
+      <h>98</h>
     </coordinates>
     <panel_attributes>_/&lt;&lt;MutableTime&gt;&gt;/_
 --
@@ -512,10 +504,10 @@ Extends</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>824</x>
-      <y>584</y>
-      <w>64</w>
-      <h>112</h>
+      <x>861</x>
+      <y>693</y>
+      <w>56</w>
+      <h>98</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 Extends</panel_attributes>
@@ -524,13 +516,179 @@ Extends</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>984</x>
-      <y>712</y>
-      <w>120</w>
-      <h>32</h>
+      <x>1001</x>
+      <y>805</y>
+      <w>105</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 Implements</panel_attributes>
     <additional_attributes>10.0;20.0;130.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1015</x>
+      <y>420</y>
+      <w>287</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>_DurationInSeconds_
+--
+- duration: long
+--
+DurationInSeconds(TimeUnit timeUnit, long lengthOfDuration)
+setDuration(TimeUnit timeUnit, long lengthOfDuration)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1085</x>
+      <y>357</y>
+      <w>168</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>_/&lt;&lt;TimerDurationSeconds&gt;&gt;/_
+--
++ getDuration(): long
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1155</x>
+      <y>385</y>
+      <w>70</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+Implements</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>133</x>
+      <y>581</y>
+      <w>490</w>
+      <h>217</h>
+    </coordinates>
+    <panel_attributes>*Observer*
+--
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>147</x>
+      <y>616</y>
+      <w>126</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>/_TimerObserver_/
+-
++ updateObserver()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>357</x>
+      <y>616</y>
+      <w>245</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>/_TimerSubject_/
+-
++ registerObserver(TimerObserver timerObserver)
++ unregisterObserver(TimerObserver timerObserver);
++ notifyObservers();</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>147</x>
+      <y>714</y>
+      <w>126</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>/_Any Observer_/
+-
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>203</x>
+      <y>658</y>
+      <w>70</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+Implements</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>413</x>
+      <y>728</y>
+      <w>126</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>/_Any Timer_/
+-
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>469</x>
+      <y>672</y>
+      <w>70</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+Implements</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1050</x>
+      <y>490</y>
+      <w>133</w>
+      <h>119</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>10.0;150.0;10.0;80.0;170.0;80.0;170.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>616</x>
+      <y>266</y>
+      <w>91</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>10.0;10.0;110.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>490</x>
+      <y>490</y>
+      <w>420</w>
+      <h>119</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>10.0;150.0;10.0;80.0;580.0;80.0;580.0;10.0</additional_attributes>
   </element>
 </diagram>

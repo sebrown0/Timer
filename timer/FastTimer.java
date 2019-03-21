@@ -7,6 +7,7 @@ import heartbeat.FastBeat;
 import heartbeat.FastHeartbeat;
 import heartbeat.SlowBeat;
 import heartbeat.SlowHeartbeat;
+import observer.Observer;
 import time.MutableTime;
 
 /**
@@ -39,6 +40,14 @@ public class FastTimer extends Timer implements Timers {
 		super(time, fastBeat, durationOfTimer);
 	}
 
+	/*
+	 *  New fast timer with a specified duration and HeartBeat.
+	 *  Using this configuration allows a target object to have a Timer and a HeartBeat running in synch.
+	 */
+	public FastTimer(MutableTime time, SlowBeat slowBeat, TimerDurationSeconds durationOfTimer, String owner, Observer timerObserver) {		
+		super(time, slowBeat, durationOfTimer, timerObserver);
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * @see timer.FastTimer#currentTime()

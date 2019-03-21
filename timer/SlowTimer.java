@@ -8,10 +8,11 @@ package timer;
 import timer.TimerDurationSeconds;
 import heartbeat.SlowBeat;
 import heartbeat.SlowHeartbeat;
+import observer.Observer;
 import time.MutableTime;
 
 /**
- * @author Brown
+ * @author Steve Brown
  *
  *  A Slow Timer implementation of a Timer
  *  It must have a slow heart beat.
@@ -38,6 +39,14 @@ public class SlowTimer extends Timer implements Timers {
 	 */
 	public SlowTimer(MutableTime time, SlowBeat slowBeat, TimerDurationSeconds durationOfTimer, String owner) {		
 		super(time, slowBeat, durationOfTimer);
+	}
+	
+	/*
+	 *  New slow timer with a specified duration and HeartBeat.
+	 *  Using this configuration allows a target object to have a Timer and a HeartBeat running in synch.
+	 */
+	public SlowTimer(MutableTime time, SlowBeat slowBeat, TimerDurationSeconds durationOfTimer, String owner, Observer timerObserver) {		
+		super(time, slowBeat, durationOfTimer, timerObserver);
 	}
 	
 	/*

@@ -5,7 +5,9 @@ package timer;
 
 import heartbeat.Beatable;
 import heartbeat.BeatingHeart;
-import heartbeat.SlowBeat;
+import observer.GenericSubject;
+import observer.Observer;
+import observer.Subject;
 import time.MutableTime;
 
 /**
@@ -17,13 +19,14 @@ import time.MutableTime;
  *  The heart beat in turn is specified by the implementation of the timer.
  */
 
-public abstract class Timer implements  Timers, Beatable {
+public abstract class Timer implements  Timers, Beatable{
 	
 	protected MutableTime time = null;				// We need a changeable time for a timer.
 	protected BeatingHeart heartBeat = null;		// A heart beat to represent a 'tick'.
 	private long beatCount =  0;					// How many beats has this timer had.
 	private long durationOfTimer = 0;				// How long should this timer run for.
 	private boolean timerRunning = false;			// Is the timer running.
+	private Subject timerSubject = null;
 
 	/*
 	 *  New Timer with a starting time and heart beat to make it tick.
@@ -42,6 +45,17 @@ public abstract class Timer implements  Timers, Beatable {
 		this.durationOfTimer = durationOfTimer.getDuration();
 	}
 
+	/*
+	 *  New Timer with a starting time, duration and heart beat to make it tick.
+	 */
+	public Timer(MutableTime time, BeatingHeart heartBeat, TimerDurationSeconds durationOfTimer, Observer timerObserver) {
+		this.time = time;
+		this.heartBeat = heartBeat;
+		this.durationOfTimer = durationOfTimer.getDuration();
+		this.timerSubject = new GenericSubject();
+		timerSubject.registerObserver(timerObserver);
+	}
+	
 	/*
 	 *  Return the time for this timer.
 	 */
@@ -98,6 +112,9 @@ public abstract class Timer implements  Timers, Beatable {
 		// Increment this timer's measurement of time.
 		incrementTimer();
 		beatCount++;
+		if(timerSubject != null) {
+			timerSubject.notifyObservers();
+		}
 		if(beatCount >= durationOfTimer) {
 			// Timer has expired so stop it.
 			stopTimer();
@@ -112,4 +129,5 @@ public abstract class Timer implements  Timers, Beatable {
 	public void run() {
 		beat();
 	}
+	
 }
