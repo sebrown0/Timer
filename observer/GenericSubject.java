@@ -14,8 +14,10 @@ public class GenericSubject implements Subject {
 
 	private List<Observer> observers;		// A list of observers, observing the subject.
 	private int numberOfObservers = 0;		// The number of registered observers.
-	
-	public GenericSubject() {
+	private String subject;
+
+	public GenericSubject(String subject) {
+		this.subject = subject;
 		observers = new ArrayList<>();
 	}
 	
@@ -53,5 +55,10 @@ public class GenericSubject implements Subject {
 	@Override
 	public int numberOfObservers() {
 		return numberOfObservers;
+	}
+
+	@Override
+	public String subjectsName() {
+		return subject;
 	}	
 }

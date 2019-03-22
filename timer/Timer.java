@@ -54,7 +54,7 @@ public abstract class Timer implements  Timers, Beatable{
 		this.time = time;
 		this.heartBeat = heartBeat;
 		this.durationOfTimer = durationOfTimer.getDuration();
-		this.thisTimer = new GenericSubject();
+		this.thisTimer = new GenericSubject("Timer");
 		thisTimer.registerObserver(timerObserver);
 	}
 	

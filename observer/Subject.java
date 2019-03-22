@@ -11,6 +11,11 @@ package observer;
 public interface Subject {
 
 	/*
+	 *  The name of the subject.
+	 */
+	String subjectsName();
+	
+	/*
 	 *  Register the observer.
 	 */
 	void registerObserver(Observer observer);
