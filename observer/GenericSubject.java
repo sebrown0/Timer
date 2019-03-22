@@ -44,8 +44,14 @@ public class GenericSubject implements Subject {
 	}
 
 	@Override
+	public void notifyObservers(ObserverMessage msg) {
+		for (Observer o : observers) {
+			o.updateObserver(msg);
+		}
+	}
+
+	@Override
 	public int numberOfObservers() {
 		return numberOfObservers;
-	}
-	
+	}	
 }

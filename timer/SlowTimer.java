@@ -5,7 +5,6 @@ package timer;
 
 
 
-import timer.TimerDurationSeconds;
 import heartbeat.SlowBeat;
 import heartbeat.SlowHeartbeat;
 import observer.Observer;

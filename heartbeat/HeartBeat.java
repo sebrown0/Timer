@@ -7,6 +7,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import observer.GenericSubject;
+import observer.Observer;
+
 /**
  * @author Steve Brown
  *
@@ -24,6 +27,7 @@ public class HeartBeat implements  BeatingHeart {
 	private boolean isBeating = false;						// Is this heart beating.
 	public String heartBeatOwner;							// The owner of this HeartBeat.
 	public String heartBeatType;							// The type of HeartBeat.
+	private GenericSubject subject = null;
 	
 	public HeartBeat() {}
 	
@@ -45,6 +49,7 @@ public class HeartBeat implements  BeatingHeart {
 	@Override
 	public void startBeating(Beatable target) {	
 		heartBeat.scheduleAtFixedRate(target, initialDelay, period,  timeUnit);
+		isBeating = true;
 	}
 	
 	/*
@@ -56,7 +61,25 @@ public class HeartBeat implements  BeatingHeart {
 		this.maxNumberOfBeats = maxNumberOfBeats;
 		heartBeat.scheduleAtFixedRate(target, initialDelay, period,  timeUnit);
 		isBeating = true;
-		System.out.println("HB -> (" + heartBeatType + ") created for: (" + heartBeatOwner + "). With (" + maxNumberOfBeats + ") beats."); // TODO - Log
+//		System.out.println("HB -> (" + heartBeatType + ") created for: (" + heartBeatOwner + "). With (" + maxNumberOfBeats + ") beats."); // TODO - Log
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see heartbeat.BeatingHeart#startBeating(heartbeat.Beatable, observer.Observer)
+	 */
+	@Override
+	public void startBeating(Beatable target, Observer observer) {
+		subject = new GenericSubject();
+		subject.registerObserver(observer);
+		startBeating(target);
+	}
+
+	@Override
+	public void startBeating(Beatable target, long maxNumberOfBeats, Observer observer) {
+		subject = new GenericSubject();
+		subject.registerObserver(observer);
+		startBeating(target, maxNumberOfBeats);
 	}
 	
 	/*
@@ -68,7 +91,7 @@ public class HeartBeat implements  BeatingHeart {
 		numberOfBeats++;
 		if(numberOfBeats >= maxNumberOfBeats) {
 			stopBeating();
-			System.out.println("HB ->  (" + heartBeatOwner + ") stopped."); // TODO - Log
+//			System.out.println("HB ->  (" + heartBeatOwner + ") stopped."); // TODO - Log
 		}
 	}
 
@@ -84,6 +107,10 @@ public class HeartBeat implements  BeatingHeart {
 			heartBeat.awaitTermination(period, timeUnit);
 			heartBeat.shutdown();
 			isBeating = false;
+			if(subject != null) {
+				// Tell any observers of this HB that it's stopped.
+				subject.notifyObservers();
+			}
 		} catch (InterruptedException e) {
 			System.out.println("Error shutting down");				// TODO - Log
 			heartBeat.shutdownNow();
@@ -115,8 +142,6 @@ public class HeartBeat implements  BeatingHeart {
 	@Override
 	public boolean isBeating() {
 		return isBeating;
-	}
-
-	
+	}	
 }
 	

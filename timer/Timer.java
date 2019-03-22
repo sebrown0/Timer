@@ -7,6 +7,7 @@ import heartbeat.Beatable;
 import heartbeat.BeatingHeart;
 import observer.GenericSubject;
 import observer.Observer;
+import observer.ObserverMessage;
 import observer.Subject;
 import time.MutableTime;
 
@@ -17,8 +18,9 @@ import time.MutableTime;
  *  The timer ticks forward with an interval, measured in a unit specified by the HeartBeat. 
  *  
  *  The heart beat in turn is specified by the implementation of the timer.
+ *  If the Timer has a registered observer it will notify the observer(s)
+ *  of a 'tick' or that the Timer is stopping.
  */
-
 public abstract class Timer implements  Timers, Beatable{
 	
 	protected MutableTime time = null;				// We need a changeable time for a timer.
@@ -26,7 +28,7 @@ public abstract class Timer implements  Timers, Beatable{
 	private long beatCount =  0;					// How many beats has this timer had.
 	private long durationOfTimer = 0;				// How long should this timer run for.
 	private boolean timerRunning = false;			// Is the timer running.
-	private Subject timerSubject = null;
+	private Subject thisTimer = null;				// This Timer is the subject of an observer(s).
 
 	/*
 	 *  New Timer with a starting time and heart beat to make it tick.
@@ -46,14 +48,14 @@ public abstract class Timer implements  Timers, Beatable{
 	}
 
 	/*
-	 *  New Timer with a starting time, duration and heart beat to make it tick.
+	 *  New Timer with a starting time, duration, heart beat to make it tick and an observer.
 	 */
 	public Timer(MutableTime time, BeatingHeart heartBeat, TimerDurationSeconds durationOfTimer, Observer timerObserver) {
 		this.time = time;
 		this.heartBeat = heartBeat;
 		this.durationOfTimer = durationOfTimer.getDuration();
-		this.timerSubject = new GenericSubject();
-		timerSubject.registerObserver(timerObserver);
+		this.thisTimer = new GenericSubject();
+		thisTimer.registerObserver(timerObserver);
 	}
 	
 	/*
@@ -99,6 +101,7 @@ public abstract class Timer implements  Timers, Beatable{
 	public void stopTimer() {
 		timerRunning = false;
 		heartBeat.stopBeating();
+		thisTimer.notifyObservers(ObserverMessage.STOPPING);
 	}
 	
 	/*
@@ -112,8 +115,8 @@ public abstract class Timer implements  Timers, Beatable{
 		// Increment this timer's measurement of time.
 		incrementTimer();
 		beatCount++;
-		if(timerSubject != null) {
-			timerSubject.notifyObservers();
+		if(thisTimer != null) {
+			thisTimer.notifyObservers(ObserverMessage.CHANGED);
 		}
 		if(beatCount >= durationOfTimer) {
 			// Timer has expired so stop it.

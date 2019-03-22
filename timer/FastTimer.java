@@ -6,7 +6,6 @@ package timer;
 import heartbeat.FastBeat;
 import heartbeat.FastHeartbeat;
 import heartbeat.SlowBeat;
-import heartbeat.SlowHeartbeat;
 import observer.Observer;
 import time.MutableTime;
 

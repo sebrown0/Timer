@@ -585,12 +585,13 @@ bg=orange</panel_attributes>
     <coordinates>
       <x>147</x>
       <y>616</y>
-      <w>126</w>
+      <w>182</w>
       <h>49</h>
     </coordinates>
     <panel_attributes>/_TimerObserver_/
 -
-+ updateObserver()</panel_attributes>
++ updateObserver()
++ updateObserver(ObserverMessage)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -599,20 +600,21 @@ bg=orange</panel_attributes>
       <x>357</x>
       <y>616</y>
       <w>245</w>
-      <h>63</h>
+      <h>77</h>
     </coordinates>
     <panel_attributes>/_TimerSubject_/
 -
 + registerObserver(TimerObserver timerObserver)
-+ unregisterObserver(TimerObserver timerObserver);
-+ notifyObservers();</panel_attributes>
++ unregisterObserver(TimerObserver timerObserver)
++ notifyObservers()
++ notifyObservers(ObserverMessage)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>147</x>
-      <y>714</y>
+      <y>742</y>
       <w>126</w>
       <h>49</h>
     </coordinates>
@@ -627,17 +629,17 @@ bg=orange</panel_attributes>
       <x>203</x>
       <y>658</y>
       <w>70</w>
-      <h>70</h>
+      <h>98</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 Implements</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>413</x>
-      <y>728</y>
+      <y>742</y>
       <w>126</w>
       <h>49</h>
     </coordinates>
@@ -650,7 +652,7 @@ Implements</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>469</x>
-      <y>672</y>
+      <y>686</y>
       <w>70</w>
       <h>70</h>
     </coordinates>
@@ -690,5 +692,17 @@ Implements</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;..</panel_attributes>
     <additional_attributes>10.0;150.0;10.0;80.0;580.0;80.0;580.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>294</x>
+      <y>742</y>
+      <w>98</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>ENUM
+_ObserverMessage_</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>

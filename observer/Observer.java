@@ -14,7 +14,13 @@ public interface Observer {
 	/*
 	 *  Inform any observer of the timer that the timer has ticked over 1 more time.
 	 */
-	void updateObserver();
+	default void updateObserver() {}
+	
+	/*
+	 *  Inform any observer of the timer that the timer has ticked over 1 more time
+	 *  and give them a message.
+	 */
+	default void updateObserver(ObserverMessage msg) {}
 	
 //	void unregister(Observer observer);
 }
