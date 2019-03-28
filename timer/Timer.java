@@ -25,7 +25,6 @@ public abstract class Timer implements  Timers, Beatable{
 	
 	protected MutableTime time = null;				// We need a changeable time for a timer.
 	protected BeatingHeart heartBeat = null;		// A heart beat to represent a 'tick'.
-	private long beatCount =  0;					// How many beats has this timer had.
 	private long durationOfTimer = 0;				// How long should this timer run for.
 	private boolean timerRunning = false;			// Is the timer running.
 	private Subject thisTimer = null;				// This Timer is the subject of an observer(s).
@@ -61,24 +60,33 @@ public abstract class Timer implements  Timers, Beatable{
 	}
 	
 	/*
+	 *  Check if the Timer has a valid duration.
+	 *  If it does decrement the duration and stop the timer if necessary.
+	 */
+	private void checkDuration() {
+		// See if a valid duration was supplied with the Timer.
+		if(durationOfTimer > 0) {
+			// There was a valid duration. See if the Timer should now be stopped after this beat.
+			if(--durationOfTimer <= 0) {
+				stopTimer();	
+			}
+		}
+	}
+	
+	/*
 	 * (non-Javadoc)
 	 * @see heartbeat.BeatingHeart#beat()
 	 */
 	@Override
 	public void beat() {
 		if(timerRunning) {
-			// Increment the number of heart beats.
-			heartBeat.anotherBeat();  				
-			// Increment this timer's measurement of time.
-			incrementTimer();
-			beatCount++;
-			if(thisTimer != null) {
+			incrementTimer();			// Increment this timer's measurement of time.
+		
+			if(thisTimer != null) {		// Subject of observer(s)?
 				thisTimer.notifyObservers(ObserverMessage.CHANGED);
 			}
-			// If the Timer has expired stop it.
-			if(beatCount >= durationOfTimer) {
-				stopTimer();	
-			}
+			
+			checkDuration();			// See if the Timer has reached the end of it's life.
 		}
 	}
 	
@@ -129,6 +137,7 @@ public abstract class Timer implements  Timers, Beatable{
 		timerRunning = false;
 		heartBeat.stopBeating();
 		if(thisTimer != null) {
+			System.out.println("Notifying from (Timer)");
 			thisTimer.notifyObservers(ObserverMessage.STOPPING);
 		}
 	}
