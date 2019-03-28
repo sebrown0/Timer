@@ -22,23 +22,6 @@ public class GenericSubject implements Subject {
 	}
 	
 	@Override
-	public void registerObserver(Observer o) {
-		this.observers.add(o);
-		numberOfObservers++;
-	}
-
-	@Override
-	public void unregisterObserver(Observer o) {
-		for (Observer observer : observers) {
-			if(observer == o) {
-				observers.remove(o);
-				numberOfObservers--;
-				System.out.println("Removed observer"); // TODO - Remove/Log
-			}
-		}
-	}
-
-	@Override
 	public void notifyObservers() {
 		for (Observer o : observers) {
 			o.updateObserver();
@@ -58,7 +41,24 @@ public class GenericSubject implements Subject {
 	}
 
 	@Override
+	public void registerObserver(Observer o) {
+		this.observers.add(o);
+		numberOfObservers++;
+	}
+
+	@Override
 	public String subjectsName() {
 		return subject;
+	}
+
+	@Override
+	public void unregisterObserver(Observer o) {
+		for (Observer observer : observers) {
+			if(observer == o) {
+				observers.remove(o);
+				numberOfObservers--;
+				System.out.println("Removed observer"); // TODO - Remove/Log
+			}
+		}
 	}	
 }

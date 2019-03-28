@@ -13,10 +13,15 @@ public interface Beatable extends Runnable{
 	
 	/*
 	 *  Should be over ridden by any object that implements BeatingHeart.
-	 *  And called from the run of the implementing object.
 	 *  
 	 *  Not strictly needed as the logic could be implemented in run().
 	 *  However, this represents the Heart Beat. 
 	 */
 	void beat();
+	
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Runnable#run()
+	 */
+	default void run() { beat (); }
 }

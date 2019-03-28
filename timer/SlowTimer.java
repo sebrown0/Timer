@@ -26,13 +26,6 @@ public class SlowTimer extends Timer implements Timers {
 	}
 
 	/*
-	 *  New slow timer with a specified duration.
-	 */
-	public SlowTimer(MutableTime time, TimerDurationSeconds durationOfTimer, String owner) {		
-		super(time, new SlowHeartbeat(owner).getBeat(SlowBeat.timeUnit, owner, "SlowTimer"), durationOfTimer);
-	}
-	
-	/*
 	 *  New slow timer with a specified duration and HeartBeat.
 	 *  Using this configuration allows a target object to have a Timer and a HeartBeat running in synch.
 	 */
@@ -49,12 +42,19 @@ public class SlowTimer extends Timer implements Timers {
 	}
 	
 	/*
+	 *  New slow timer with a specified duration.
+	 */
+	public SlowTimer(MutableTime time, TimerDurationSeconds durationOfTimer, String owner) {		
+		super(time, new SlowHeartbeat(owner).getBeat(SlowBeat.timeUnit, owner, "SlowTimer"), durationOfTimer);
+	}
+	
+	/*
 	 * (non-Javadoc)
 	 * @see timer.SlowTimer#currentTime()
 	 */
 	@Override
 	public int currentTime() {
-		return time.seconds();
+		return super.time().currentTime();
 	}
 
 	/*

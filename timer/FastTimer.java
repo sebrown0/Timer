@@ -25,26 +25,26 @@ public class FastTimer extends Timer implements Timers {
 	}
 	
 	/*
-	 *  New fast timer with a specified duration.
-	 */
-	public FastTimer(MutableTime time, TimerDurationSeconds durationOfTimer, String owner) {		
-		super(time, new FastHeartbeat(owner).getBeat(FastBeat.timeUnit, owner, "FastTimer"), durationOfTimer);
-	}
-	
-	/*
 	 *  New fast timer with a specified duration and HeartBeat.
 	 *  Using this configuration allows a target object to have a Timer and a HeartBeat running in synch.
 	 */
 	public FastTimer(MutableTime time, FastBeat fastBeat, TimerDurationSeconds durationOfTimer, String owner) {		
 		super(time, fastBeat, durationOfTimer);
 	}
-
+	
 	/*
 	 *  New fast timer with a specified duration and HeartBeat.
 	 *  Using this configuration allows a target object to have a Timer and a HeartBeat running in synch.
 	 */
 	public FastTimer(MutableTime time, SlowBeat slowBeat, TimerDurationSeconds durationOfTimer, String owner, Observer timerObserver) {		
 		super(time, slowBeat, durationOfTimer, timerObserver);
+	}
+
+	/*
+	 *  New fast timer with a specified duration.
+	 */
+	public FastTimer(MutableTime time, TimerDurationSeconds durationOfTimer, String owner) {		
+		super(time, new FastHeartbeat(owner).getBeat(FastBeat.timeUnit, owner, "FastTimer"), durationOfTimer);
 	}
 	
 	/*
@@ -53,7 +53,7 @@ public class FastTimer extends Timer implements Timers {
 	 */
 	@Override
 	public int currentTime() {
-		return time.milliSeconds();
+		return (super.time().currentTime() * 1000);		// TODO - Check this.
 	}
 
 	/*

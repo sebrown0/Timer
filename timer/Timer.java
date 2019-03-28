@@ -29,6 +29,7 @@ public abstract class Timer implements  Timers, Beatable{
 	private long durationOfTimer = 0;				// How long should this timer run for.
 	private boolean timerRunning = false;			// Is the timer running.
 	private Subject thisTimer = null;				// This Timer is the subject of an observer(s).
+	private Observer ourObserver = null;			// Any object interested in us.
 
 	/*
 	 *  New Timer with a starting time and heart beat to make it tick.
@@ -55,53 +56,8 @@ public abstract class Timer implements  Timers, Beatable{
 		this.heartBeat = heartBeat;
 		this.durationOfTimer = durationOfTimer.getDuration();
 		this.thisTimer = new GenericSubject("Timer");
-		thisTimer.registerObserver(timerObserver);
-	}
-	
-	/*
-	 *  Return the time for this timer.
-	 */
-	public MutableTime time() {
-		return time;
-	}
-	
-	/*
-	 *  Return the heart beat for this timer.
-	 */
-	public BeatingHeart heartBeat() {
-		return heartBeat;
-	}
-	
-	/*
-	 *  Check to see if the timer is running.
-	 */
-	public boolean timerRunning() {
-		return timerRunning;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see timer.Timers#startTimer()
-	 */
-	@Override
-	public void startTimer() {	
-		timerRunning = true;
-		if(durationOfTimer <= 0 ) {
-			heartBeat.startBeating(this);
-		} else {
-			heartBeat.startBeating(this, durationOfTimer);
-		}
-	}
-		
-	/*
-	 * (non-Javadoc)
-	 * @see timer.Timers#stopTimer()
-	 */
-	@Override
-	public void stopTimer() {
-		timerRunning = false;
-		heartBeat.stopBeating();
-		thisTimer.notifyObservers(ObserverMessage.STOPPING);
+		this.ourObserver = timerObserver;
+		thisTimer.registerObserver(ourObserver);
 	}
 	
 	/*
@@ -110,27 +66,86 @@ public abstract class Timer implements  Timers, Beatable{
 	 */
 	@Override
 	public void beat() {
-		// Increment the number of heart beats.
-		heartBeat.anotherBeat();  				
-		// Increment this timer's measurement of time.
-		incrementTimer();
-		beatCount++;
-		if(thisTimer != null) {
-			thisTimer.notifyObservers(ObserverMessage.CHANGED);
+		if(timerRunning) {
+			// Increment the number of heart beats.
+			heartBeat.anotherBeat();  				
+			// Increment this timer's measurement of time.
+			incrementTimer();
+			beatCount++;
+			if(thisTimer != null) {
+				thisTimer.notifyObservers(ObserverMessage.CHANGED);
+			}
+			// If the Timer has expired stop it.
+			if(beatCount >= durationOfTimer) {
+				stopTimer();	
+			}
 		}
-		if(beatCount >= durationOfTimer) {
-			// Timer has expired so stop it.
-			stopTimer();
+	}
+	
+	/*
+	 *  Return the heart beat for this timer.
+	 */
+	@Override
+	public BeatingHeart heartBeat() {
+		return heartBeat;
+	}
+	
+	/*
+	 *  Set the observer for this timer.
+	 */
+	@Override
+	public void setObserver(Observer o) {
+		this.ourObserver = o;	
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see timer.Timers#startTimer()
+	 */
+	@Override
+	public void startTimer() {	
+		timerRunning = true;
+		if(durationOfTimer <= 0 ) {
+			if(thisTimer != null) {
+				heartBeat.startBeating(this, ourObserver);
+			}else {
+				heartBeat.startBeating(this);
+			}
+		} else {
+			if(thisTimer != null) {
+				heartBeat.startBeating(this, durationOfTimer, ourObserver);
+			}else {
+				heartBeat.startBeating(this, durationOfTimer);
+			}
 		}
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see java.lang.Runnable#run()
+	 * @see timer.Timers#stopTimer()
 	 */
 	@Override
-	public void run() {
-		beat();
+	public void stopTimer() {
+		timerRunning = false;
+		heartBeat.stopBeating();
+		if(thisTimer != null) {
+			thisTimer.notifyObservers(ObserverMessage.STOPPING);
+		}
+	}
+		
+	/*
+	 *  Return the time for this timer.
+	 */
+	@Override
+	public MutableTime time() {
+		return time;
 	}
 	
+	/*
+	 *  Check to see if the timer is running.
+	 */
+	@Override
+	public boolean timerRunning() {
+		return timerRunning;
+	}	
 }
