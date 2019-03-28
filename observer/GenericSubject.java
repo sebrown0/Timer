@@ -34,7 +34,7 @@ public class GenericSubject implements Subject {
 			o.updateObserver(msg);
 		}
 	}
-
+	
 	@Override
 	public int numberOfObservers() {
 		return numberOfObservers;
@@ -60,5 +60,6 @@ public class GenericSubject implements Subject {
 				System.out.println("Removed observer"); // TODO - Remove/Log
 			}
 		}
-	}	
+	}
+
 }

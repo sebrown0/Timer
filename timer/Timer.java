@@ -135,11 +135,11 @@ public abstract class Timer implements  Timers, Beatable{
 	@Override
 	public void stopTimer() {
 		timerRunning = false;
-		heartBeat.stopBeating();
+
 		if(thisTimer != null) {
-			System.out.println("Notifying from (Timer)");
 			thisTimer.notifyObservers(ObserverMessage.STOPPING);
 		}
+		heartBeat.stopBeating();
 	}
 		
 	/*

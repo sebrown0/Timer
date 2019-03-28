@@ -111,10 +111,9 @@ public class HeartBeat implements BeatingHeart {
 	public void stopBeating() {
 
 		isBeating = false;
-		System.out.println("(" + heartBeatOwner + ") HB shutting down"); // TODO - Log
+//		System.out.println("(" + heartBeatOwner + ") HB shutting down"); // TODO - Log
 
 		if (subject != null) { // Tell any observers of this HB that it's stopped.
-			System.out.println("Notifying from (HB)");
 			subject.notifyObservers();
 		}
 		
@@ -127,16 +126,6 @@ public class HeartBeat implements BeatingHeart {
 			System.out.println("Error shutting down"); // TODO - Log
 			heartBeat.shutdownNow();
 		}
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Runnable#run()
-	 */
-	@Override
-	public void run() {
-		// Beatable object should implement.
 	}
 
 	/*

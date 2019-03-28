@@ -34,7 +34,7 @@ public interface Subject {
 	 *  Notify any observers that the subject has changed and give the reason.
 	 */
 	void notifyObservers(ObserverMessage msg);
-	
+		
 	/*
 	 *  The number of registered observers.
 	 */

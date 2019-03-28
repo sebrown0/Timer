@@ -48,7 +48,6 @@ public final class DurationInSeconds implements TimerDurationSeconds {
 		
 		// Check to see that the number is valid.
 		duration = (duration < 0 || duration > Long.MAX_VALUE) ? 0 : duration;
-		System.out.println("Duration: " + duration);
 	}
 
 	/*
