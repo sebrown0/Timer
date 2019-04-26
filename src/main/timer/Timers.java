@@ -21,7 +21,7 @@ import time.MutableTime;
  *  If the Timer has a registered observer it will notify the observer(s)
  *  of a 'tick' or that the Timer is stopping.
  */
-public abstract class Timer implements  Timers, Beatable{
+public abstract class Timers implements  Timer, Beatable{
 	
 	protected MutableTime time = null;				// We need a changeable time for a timer.
 	protected BeatingHeart heartBeat = null;		// A heart beat to represent a 'tick'.
@@ -33,7 +33,7 @@ public abstract class Timer implements  Timers, Beatable{
 	/*
 	 *  New Timer with a starting time and heart beat to make it tick.
 	 */
-	public Timer(MutableTime time, BeatingHeart heartBeat) {
+	public Timers(MutableTime time, BeatingHeart heartBeat) {
 		this.time = time;
 		this.heartBeat = heartBeat;
 	}
@@ -41,7 +41,7 @@ public abstract class Timer implements  Timers, Beatable{
 	/*
 	 *  New Timer with a starting time, duration and heart beat to make it tick.
 	 */
-	public Timer(MutableTime time, BeatingHeart heartBeat, TimerDurationSeconds durationOfTimer) {
+	public Timers(MutableTime time, BeatingHeart heartBeat, TimerDurationSeconds durationOfTimer) {
 		this.time = time;
 		this.heartBeat = heartBeat;
 		this.durationOfTimer = durationOfTimer.getDuration();
@@ -50,7 +50,7 @@ public abstract class Timer implements  Timers, Beatable{
 	/*
 	 *  New Timer with a starting time, duration, heart beat to make it tick and an observer.
 	 */
-	public Timer(MutableTime time, BeatingHeart heartBeat, TimerDurationSeconds durationOfTimer, Observer timerObserver) {
+	public Timers(MutableTime time, BeatingHeart heartBeat, TimerDurationSeconds durationOfTimer, Observer timerObserver) {
 		this.time = time;
 		this.heartBeat = heartBeat;
 		this.durationOfTimer = durationOfTimer.getDuration();
@@ -93,10 +93,10 @@ public abstract class Timer implements  Timers, Beatable{
 	/*
 	 *  Return the heart beat for this timer.
 	 */
-	@Override
-	public BeatingHeart heartBeat() {
-		return heartBeat;
-	}
+//	@Override
+//	public BeatingHeart heartBeat() {
+//		return heartBeat;
+//	}
 	
 	/*
 	 *  Set the observer for this timer.
@@ -156,5 +156,10 @@ public abstract class Timer implements  Timers, Beatable{
 	@Override
 	public boolean timerRunning() {
 		return timerRunning;
-	}	
+	}
+	
+	@Override
+	public String currentTimeFormatted() {
+		return time.formattedTime();
+	}
 }

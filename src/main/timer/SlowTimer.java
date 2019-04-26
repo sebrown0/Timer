@@ -16,7 +16,7 @@ import time.MutableTime;
  *  A Slow Timer implementation of a Timer
  *  It must have a slow heart beat.
  */
-public class SlowTimer extends Timer implements Timers {
+public class SlowTimer extends Timers implements Timer {
 
 	/*
 	 *  New slow timer without a specified duration.
@@ -65,5 +65,4 @@ public class SlowTimer extends Timer implements Timers {
 	public void incrementTimer() {
 		time.incrementSeconds();
 	}
-
 }

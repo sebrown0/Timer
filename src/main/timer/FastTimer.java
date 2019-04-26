@@ -15,7 +15,7 @@ import time.MutableTime;
  *  A Fast Timer implementation of a Timer
  *  It must have a fast heart beat.
  */
-public class FastTimer extends Timer implements Timers {
+public class FastTimer extends Timers implements Timer {
 
 	/*
 	 *  New fast timer without a specified duration.
